@@ -6,6 +6,7 @@ import { parseSms, CATEGORIES } from "@/lib/parser";
 import StatementUpload from "@/components/StatementUpload";
 import NotificationsSection, { type NotifySettings } from "@/components/NotificationsSection";
 import { PlanSection, RemindersSection } from "@/components/PremiumSections";
+import { RunwaySection, WhatIfPanel, WrappedSection } from "@/components/Insights";
 import { dueLabel, upcoming, type Bill } from "@/lib/upcoming";
 import { todayIST } from "@/lib/dates";
 import {
@@ -262,6 +263,8 @@ export default function Dashboard({ email, plan, txns, goals, bills, settings, j
         </section>
       ) : (
         <>
+          <RunwaySection txns={txns} bills={bills} recurring={recurring} />
+
           {/* MONTH */}
           <section className="sec dash">
             <div className="month-head">
@@ -300,6 +303,8 @@ export default function Dashboard({ email, plan, txns, goals, bills, settings, j
             </div>
           </section>
 
+          <WrappedSection txns={txns} ym={ym} saved={saving} />
+
           {/* CANCEL */}
           <section className="sec dash">
             <h2>Cancel these.</h2>
@@ -327,6 +332,7 @@ export default function Dashboard({ email, plan, txns, goals, bills, settings, j
                     <span className="cap">You could save</span>
                     <span className="big mono">{inr(saving)}</span>
                     <p className="yr">a month. That is <span className="mono">{inr(saving * 12)}</span> a year.</p>
+                    <WhatIfPanel monthly={saving} />
                   </div>
                 </div>
               </>
