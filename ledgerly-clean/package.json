@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "tsc --noEmit",
-    "test": "tsx scripts/test-parser.ts && tsx scripts/test-statement.ts && tsx scripts/test-plan.ts && tsx scripts/test-digest.ts && tsx scripts/test-telegram.ts"
+    "test": "tsx scripts/test-parser.ts && tsx scripts/test-statement.ts && tsx scripts/test-plan.ts && tsx scripts/test-digest.ts && tsx scripts/test-telegram.ts && tsx scripts/test-insights.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
