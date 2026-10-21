@@ -190,7 +190,7 @@ export default function Dashboard({ email, plan, txns, goals, bills, settings, j
   const dueSoon = upcoming(bills, findRecurring(txns), todayIST()).filter((u) => u.inDays <= u.remindDays);
 
   return (
-    <div className="page">
+    <div className="page" data-clarity-mask="True">
       <header className="top">
         <a className="mark" href="/khata" style={{ textDecoration: "none", color: "inherit" }}>
           Ledgerly<i>.</i>
