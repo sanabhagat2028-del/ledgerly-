@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./app.css";
+import Script from "next/script";
+
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 
 export const metadata: Metadata = {
   title: "Ledgerly: your bank SMS, kept like a khata",
@@ -33,6 +36,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </filter>
         </svg>
         {children}
+        {CLARITY_ID && /^[a-z0-9]{6,20}$/i.test(CLARITY_ID) && (
+          <Script id="clarity" strategy="afterInteractive">
+            {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${CLARITY_ID}");`}
+          </Script>
+        )}
       </body>
     </html>
   );
